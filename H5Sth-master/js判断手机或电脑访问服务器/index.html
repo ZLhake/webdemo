@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+</head>
+<body>
+	你好 left
+</body>
+</html>
+<script>
+	alert(navigator.userAgent);//判断是手机还是window访问 
+
+    // 1.
+	function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+// 2.
+function browserRedirect() {
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (!(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) ){
+        window.location.href=B页面;
+    }
+}
+// 3.
+var browser_class = navigator.userAgent;
+var browser_class_name1 = browser_class.match("Mobile");
+var browser_class_name2 = browser_class.match("mobile");
+var location_url = window.location.href;
+if (browser_class_name1 != null || browser_class_name2 != null) {
+ if (location_url.match("wap") == null) {
+  window.location.href ="";
+ 
+ }
+} else {
+ if (location_url.match("3g") != null || location_url.match("wap") != null) {
+  window.location.href = "";
+ 
+ }
+}
+
+
+
+</script>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas画图</title>
+	<style>
+	#wrap{
+		width: 800px;
+		height: 900px;
+		margin: 50px auto;
+		position: relative;
+	}
+	#image{
+		display: block;
+		width: 800px;
+		height: 900px;
+		/*margin: 50px auto;*/
+		/*css3模糊属性*/
+		filter: blur(10px);
+		-webkit-filter:blur(10px);
+		-moz-filter:blur(10px);
+		-ms-filter:blur(10px);
+		-o-filter:blur(10px);
+
+		position: absolute;
+
+
+	}	
+	#canvas{
+		position: absolute;
+		/*background: red;*/
+		z-index: 10;
+	}	
+	
+	#wrap .button{
+		/*display: block;*/
+		position: absolute;
+		background-color: blue;
+		width: 100px;
+		height: 50px;
+		z-index: 20;
+		color: white;
+		line-height: 50px;
+		text-align: center;
+		/*text-decoration: none;*/
+		bottom: 50px;
+		border-radius:10px;
+	}
+	#wrap #reset-button{
+		left: 200px
+	}
+	#wrap #show-button{
+		right:200px;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<img id="image" src="123.jpg" alt="健身">
+		<canvas id="canvas">你的浏览器不支持canvas</canvas>
+		<button class="button" id="reset-button">RESET</button>
+		<button class="button" id="show-button">SHOW</button>
+	</div>
+</body>
+</html>
+
+<script src='jquery-1.7.2/jquery.js'></script>
+<script>
+		window.onload = function(){
+		var canvasWidth = 800;
+		var canvasHeight = 900;
+
+		var canvas = document.getElementById("canvas");
+		var cxt = canvas.getContext("2d");
+
+		canvas.width = canvasWidth;
+		canvas.height = canvasHeight;
+		var image = new Image();
+		image.src = "123.jpg";
+		var clippingRegion = {x:400,y:200,r:50};
+		image.onload = function(e){
+			initCanvas();
+		}
+
+		function initCanvas(){
+			clippingRegion = {x:100+Math.random()*600,y:100+Math.random()*700,r:100};//每次reset之前重新随机位；
+			// console.log(clippingRegion);
+			draw(image,clippingRegion);
+
+
+		}
+		function draw(image,clippingRegion){
+			cxt.clearRect(0,0,canvas.width,canvas.height);
+			cxt.save();
+			setClippingRegion(clippingRegion);//创建剪辑区域
+			cxt.drawImage(image,0,0,canvasWidth,canvasHeight);
+			cxt.restore();
+
+		}
+		function setClippingRegion(clippingRegion){
+			cxt.beginPath();
+			// console.log(clippingRegion);
+			cxt.arc(clippingRegion.x,clippingRegion.y,clippingRegion.r,0,Math.PI*2,false);
+			cxt.clip();
+
+
+		}
+		document.getElementById('show-button').onclick = function(){
+			var animation = setInterval(function(){
+				clippingRegion.r += 20;
+				if(clippingRegion.r>1100){
+					clearInterval(animation);
+					
+				}
+				draw(image,clippingRegion);
+
+			})
+		}
+		
+		document.getElementById('reset-button').onclick = function(){
+			initCanvas();
+		}
+
+		}
+
+
+
+
+	
+
+
+
+</script>

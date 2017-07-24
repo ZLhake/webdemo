@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=1280, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0" name="viewport">
+	<title>利用font-size的rem属性进行页面响应式布局</title>
+	<style>
+		
+		#box{
+			width: 500px;
+			height: 500px;
+			text-align: center;
+			background-color:green;
+			margin: 50px auto;
+			padding: 50px;
+		}
+
+		 /*@media screen and (max-width:1280px){	
+			span,i,div,p{
+				font-size:14px;	
+				color: white;
+			}*/
+		} 
+
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<p>利用font-size的rem属性进行页面响应式布局</p>
+		
+	</div>
+	<script>
+		window.onload = function(){
+			// var htmlWidth = document.documentElement.clientWidth;
+				console.log(document.documentElement.clientWidth);
+				// document.documentElement.style.fontSize = htmlWidth / 19.2 + 'px';
+		}
+				
+	</script>
+	
+</body>
+</html>

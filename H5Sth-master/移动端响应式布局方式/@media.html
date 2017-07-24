@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通过应引用不同的媒体查询文件进行布局</title>
+	<style>
+		/*这种响应式布局需要些很多套css代码 */
+		@media screen and (max-width: 750px) {
+			#box{
+			width: 500px;
+			height: 300px;
+			text-align: center;
+			background-color:green;
+			margin: 50px auto;
+			padding: 50px;
+			}
+		}
+		@media screen and (min-width: 750px) and (max-width: 1080px) {
+			#box{
+			width: 600px;
+			height: 400px;
+			text-align: center;
+			background-color:yellow;
+			margin: 80px auto;
+			padding: 80px;
+			}
+		}
+		@media screen and (min-width: 1080px) and (max-width: 1280px) {
+			#box{
+			width: 1000px;
+			height: 600px;
+			text-align: center;
+			background-color:red;
+			margin: 100px auto;
+			padding: 100px;
+			}
+		}
+		@media screen and (min-width: 1280px) {
+			#box{
+			width: 1200px;
+			height: 800px;
+			text-align: center;
+			background-color:orange;
+			margin: 150px auto;
+			padding: 150px;
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<p>利用font-size的rem属性进行页面响应式布局</p>
+		
+	</div>
+</body>
+</html>

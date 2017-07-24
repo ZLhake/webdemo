@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0" name="viewport">
+	<title>利用font-size的rem属性进行页面响应式布局</title>
+	<style>
+		/*三种方式优缺点：
+		优点：兼容性好，@media在ie9以上是支持的，PC和MOBILE是同一套代码的，不用分开。
+		缺点：要写得css相对另外两个多很多，而且各个断点都要做好。css样式会稍微大点，更麻烦。
+		
+		REM优缺点
+		优点：能维持能整体的布局效果，移动端兼容性好，不用写多个css代码，而且还可以利用@media进行优化。
+		缺点：开头要引入一段js代码，单位都要改成rem(font-size可以用px)，计算rem比较麻烦(可以引用预处理器，但是增加了编译过程，相对麻烦了点)。pc和mobile要分开。
+
+		设置viewport中的width
+		优点：和REM相同，而且不用写rem，直接使用px，更加快捷。
+		缺点：效果可能没rem的好，图片可能会相对模糊，而且无法使用@media进行断点，不同size的手机上显示，高度间距可能会相差很大。
+		
+		总结
+		还是看项目需求，再决定使用哪种方案，如果就手机站的话，我使用REM比较多。如果对距离比较精确的话，大量css3动画的，就使用第三种。*/
+		#box{
+			width: 10rem;
+			text-align: center;
+			background-color:green;
+			margin: 1rem auto;
+			padding: 1rem;
+		}
+
+		@media screen and (max-width:1280px){	
+			span,i,div,p{
+				font-size:14px;	
+				color: white;
+			}
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<p>利用font-size的rem属性进行页面响应式布局</p>
+		
+	</div>
+	<script>
+		window.onload = function(){
+			var htmlWidth = document.documentElement.clientWidth;
+				// console.log(htmlWidth);
+				document.documentElement.style.fontSize = htmlWidth / 19.2 + 'px';
+		}
+				
+	</script>
+	
+</body>
+</html>

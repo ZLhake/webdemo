@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>window自带方法总结</title>
+	<meta charset="utf-8">
+	<!-- 1，页面自动刷新：把如下代码加入<head>区域中 -->
+	<!-- <meta http-equiv="refresh" content="20"> -->
+	<!-- 其中20指隔20秒后跳转到http://www.jb51.net页面 -->
+	<!-- <meta http-equiv="refresh" content="20;url=http://www.jb51.net"> -->
+
+</head>
+<body>
+	<!-- 1，history.go(0) 
+	2，location.reload() 
+	3，location=location 
+	4，location.assign(location) 
+	5，document.execCommand('Refresh') 
+	6，window.navigate(location) 
+	7，location.replace(location) 
+	8，document.URL=location.href -->
+
+		<!-- 刷新包含该框架的页面用   
+		<script language=JavaScript>
+		   parent.location.reload();
+		</script>
+		//子窗口刷新父窗口
+		<script language=JavaScript>
+		    self.opener.location.reload();
+		</script>
+		(　或　<a href="javascript:opener.location.reload()">刷新</a>   )
+		//刷新另一个框架的页面用   
+		<script language=JavaScript>
+		   parent.另一FrameID.location.reload();
+		</script> -->
+
+
+		<!-- 如果想关闭窗口时刷新或想开窗时刷新，在<body>中调用以下语句即可。
+		复制代码 代码如下: -->
+
+
+		<!-- <body onload="opener.location.reload()"> 开窗时刷新
+		<body onUnload="opener.location.reload()"> 关闭时刷新 -->
+		<script>
+		// window.opener.document.location.reload();
+		// console.log(window.location);
+		// console.log(window);全局变量,里面有所有属性；
+		// console.log(window.location.href);
+
+		</script>
+
+</body>
+</html>

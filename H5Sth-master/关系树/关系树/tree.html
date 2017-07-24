@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="jquery.ztree.core-3.5.js"></script>
+    <script src="jquery.ztree.excheck-3.5.js"></script>
+    <link rel="stylesheet" href="zTreeStyle.css">
+</head>
+<body>
+
+<div style="width:300px;height:100px;overflow: auto">
+    <ul id="tree" class="ztree" >
+
+    </ul>
+</div>
+
+
+</body>
+</html>
+<script>
+    $(function(){
+        loadTree("tree", setting, zTreeNodes);
+    });
+    function loadTree(tree, setting, znodes) {
+        var t = $("#" + tree);
+        t = $.fn.zTree.init(t, setting, znodes);
+        t.expandNode(t.getNodes()[0], true, false, false);
+    }
+
+    var zTreeNodes = [
+        { id:"100",name:"公司总部"},
+        { id:"10001",name:"公司安监部"},
+        { id:"10002",name:"公司办公室"},
+        { id:"10003",name:"公司纪检监察审计部"},
+        { id:"10004",name:"公司设备管理部"},
+        { id:"10005",name:"公司工程养护部"},
+        { id:"10006",name:"公司营运管理部"},
+        { id:"10007",name:"公司计划财务部"},
+        { id:"10008",name:"公司人力资源部"},
+        {id:"10009",name:"公司建设管理部"},
+        { id:"10010",name:"公司监控指挥中心"}
+        ];
+
+
+    var setting= {
+        view: {
+            dblClickExpand: false,
+            showLine: true,
+            selectedMulti: true
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "pId",
+                rootPId: ""
+            }
+        },
+
+    };
+
+
+</script>
